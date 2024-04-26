@@ -3,12 +3,35 @@ import repositories from "../data/repositories";
 import { View, Text, Button } from "react-native";
 
 const generarNumeroAleatorio = (min, max) => {
+    if (min === max) {
+        return min;
+    }
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+const seleccionarElementoAleatorio = (lista) => {
+    return lista[Math.floor(Math.random() * lista.length)];
+}
 
-const evaluarCondicion = (condicion, a, b, c, d=null) => {
+
+const evaluarCondicion = (condiciones, variables) => {
+    for (let condicion of condiciones) {
+
+        let condicionReemplazada = condicion;
+        for (let variable in variables) {
+            condicionReemplazada = condicionReemplazada.replace(new RegExp(variable, 'g'), variables[variable]);
+        }
+        let resultado = new Function(`return ${condicionReemplazada};`)();
+
+        
+        if (!resultado) {
+            return false;
+        }
+    }
+    
+    return true
     let condicionReemplazada = null
+    if(condicion)
     if(d==null){
         condicionReemplazada = condicion
         .replace(/a/g, a)
@@ -28,26 +51,66 @@ const evaluarCondicion = (condicion, a, b, c, d=null) => {
 };
 
 const realizarOperacion = (operacion) => {
-    let a, b, c, d;
+    let a, b, c, d,e,f;
     let condicionCumplida = false;
 
     while (!condicionCumplida) {
         a = generarNumeroAleatorio(operacion.a.min, operacion.a.max);
         b = generarNumeroAleatorio(operacion.b.min, operacion.b.max);
         c = generarNumeroAleatorio(operacion.c.min, operacion.c.max);
+        let variables = {
+            'a':a,
+            'b':b,
+            'c':c
+        }
         if(operacion.variableCount == 4){
             d = generarNumeroAleatorio(operacion.d.min, operacion.d.max);
+            variables = {
+                'a':a,
+                'b':b,
+                'c':c,
+                'd':d
+            }
             console.log("Se acaba de crear la DDDDDD",d)
+        }else if(operacion.variableCount == 6){
+            d = generarNumeroAleatorio(operacion.d.min, operacion.d.max);
+            e = generarNumeroAleatorio(operacion.e.min, operacion.e.max);
+            f = generarNumeroAleatorio(operacion.f.min, operacion.f.max);
+            variables = {
+                'a':a,
+                'b':b,
+                'c':c,
+                'd':d,
+                'e':e,
+                'f':f
+            }
+        }else if(operacion.variableCount == 5){
+            d = generarNumeroAleatorio(operacion.d.min, operacion.d.max);
+            e = generarNumeroAleatorio(operacion.e.min, operacion.e.max);
+            variables = {
+                'a':a,
+                'b':b,
+                'c':c,
+                'd':d,
+                'e':e
+            }
         }
         console.log("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
         if (operacion.condicion) {
             try {
-                if(operacion.variableCount == 3){
+                /*if(operacion.variableCount == 3){
                     condicionCumplida = evaluarCondicion(operacion.condicion, a, b, c);
-                }else{
+                }else if(operacion.variableCount == 6){
+                    condicionCumplida = evaluarCondicion(operacion.condicion, a, b, c,d,e,f);
+                }
+                else if(operacion.variableCount == 5){
+                    condicionCumplida = evaluarCondicion(operacion.condicion, a, b, c,d,e);
+                }
+                else{
                     console.log("ENTROOO AQUIIII ",d)
                     condicionCumplida = evaluarCondicion(operacion.condicion, a, b, c, d);
-                }
+                }*/
+                condicionCumplida = evaluarCondicion(operacion.condicion,variables)
             } catch (error) {
                 console.error("Error evaluando la condición:", error);
                 return {
@@ -64,7 +127,19 @@ const realizarOperacion = (operacion) => {
     const resultadoFuncion = operacion.funcion
 
     if (resultadoFuncion) {
-        const resultado = resultadoFuncion(a, b, c);
+        let resultado = ""
+        if(operacion.variableCount == 3){
+            resultado = resultadoFuncion(a, b, c);
+        }else if(operacion.variableCount == 6){
+            resultado = resultadoFuncion(a, b, c,d,e,f);
+        }
+        else if(operacion.variableCount == 5){
+            resultado = resultadoFuncion(a, b, c,d,e);
+        }
+        else{
+            resultado = resultadoFuncion(a,b,c,d);
+        }
+        
 
         console.log(opciones)
         
@@ -76,7 +151,24 @@ const realizarOperacion = (operacion) => {
                 .replace(/a/g, a.toString())
                 .replace(/b/g, b.toString())
                 .replace(/c/g, c.toString());
-            }else{
+            }else if(operacion.variableCount == 6){
+                opcionCalculada = opcion
+                .replace(/a/g, a.toString())
+                .replace(/b/g, b.toString())
+                .replace(/c/g, c.toString())
+                .replace(/d/g, d.toString())
+                .replace(/e/g, e.toString())
+                .replace(/f/g, f.toString());
+            }
+            else if(operacion.variableCount == 5){
+                opcionCalculada = opcion
+                .replace(/a/g, a.toString())
+                .replace(/b/g, b.toString())
+                .replace(/c/g, c.toString())
+                .replace(/d/g, d.toString())
+                .replace(/e/g, e.toString());
+            }
+            else{
                 opcionCalculada = opcion
                 .replace(/a/g, a.toString())
                 .replace(/b/g, b.toString())
@@ -89,7 +181,15 @@ const realizarOperacion = (operacion) => {
         
             try {
                 console.log("Esto se va a caluclar",opcionCalculada)
-                return eval(opcionCalculada);
+                if(opcionCalculada.length>1){
+                    if(operacion.evaluar){
+                        return opcionCalculada
+                    }else{
+                        return eval(opcionCalculada);
+                    }
+                }else{
+                    return opcionCalculada;
+                }
             } catch (error) {
                 console.error("Error evaluando la opción:", error);
                 return null;
@@ -101,17 +201,64 @@ const realizarOperacion = (operacion) => {
         //const preg = operacion.tipo.replace
         console.log("PRegutaaaa",operacion.tipo)
         let preg = null
-        if(operacion.variableCount){
-            preg = operacion.tipo
+        if(operacion.tipo){
+            if(operacion.variableCount == 3){
+                preg = operacion.tipo
+                    .replace(/a/g,a)
+                    .replace(/b/g,b)
+                    .replace(/c/g,c)+" ?"
+            }
+            else if(operacion.variableCount == 5){
+                preg = operacion.tipo
                 .replace(/a/g,a)
                 .replace(/b/g,b)
-                .replace(/c/g,c)+" ?"
+                .replace(/c/g,c)
+                .replace(/d/g,d)
+                .replace(/e/g,e)+" ?"
+            }else{
+                preg = operacion.tipo
+                .replace(/a/g,a)
+                .replace(/b/g,b)
+                .replace(/c/g,c)
+                .replace(/d/g,d)+" ?"
+            }
         }else{
-            preg = operacion.tipo
-            .replace(/a/g,a)
-            .replace(/b/g,b)
-            .replace(/c/g,c)
-            .replace(/d/g,d)+" ?"
+            
+            let A = seleccionarElementoAleatorio(operacion.A)
+            let B = ""
+            if(operacion.B){
+                B = seleccionarElementoAleatorio(operacion.B)
+            }
+            
+
+            preg = operacion.Pregunta
+                .replace(" a "," "+a+" ")
+                .replace(" b "," "+b+" ")
+                .replace(/A/g,A)
+                .replace("B",B)
+                .replace(" c "," "+c+" ")
+                .replace(" d "," "+d+" ")
+                .replace(" e "," "+e+" ")
+                .replace(" f "," "+f+" ")
+        }
+        
+
+        if(!operacion.isNumeric){
+            console.log("ENTRO a es numerico")
+            if(operacion.evaluar){
+                
+            }else{
+                preg = preg.split("=")
+                res = preg[1]
+                .replace(/a/g, a.toString())
+                .replace(/b/g, b.toString())
+                .replace(/c/g, c.toString())
+                .replace("?","");
+                console.log("ESTO SE VA A EVALUAR: "+res)
+                res = eval(res)
+                preg = preg[0]+" = "+res
+            }
+            
         }
         
         console.log("PR",preg)
