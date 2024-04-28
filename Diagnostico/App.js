@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Main from './src/Components/Main';
+import Main from './src/Components/Main'
+import Game from './src/Components/Game'
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Main></Main>
+        <Main></Main>
     </View>
   );
 }
