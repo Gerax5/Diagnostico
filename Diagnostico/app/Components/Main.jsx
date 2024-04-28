@@ -6,7 +6,7 @@ import Heading from './Heading';
 import images from '../data/images';
 import ButtonGame from './ButtonGame';
 import Footer from './footer';
-import {router} from 'expo-router'
+import {router, useNavigation} from 'expo-router'
 
 let heigh = 0
 /**
@@ -32,12 +32,14 @@ let heigh = 0
 
 const Main = () => {
 
+    const navigation = useNavigation();
+
     const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
-    const handleStartGame = () =>{
-        console.log("Si se preciona")
-        router.push("/Components/Game")
-    }
+    const handleStartGame = () => {
+        // Navegar a la pantalla /components/games
+        navigation.navigate("Components/Game");
+      };
 
     const styles = StyleSheet.create({
         image : {
@@ -61,9 +63,16 @@ const Main = () => {
             height:"97%",
             borderRadius:25
         },
+        cont:{
+            flex:1,
+            height:"100%",
+            width:"100%",
+            backgroundColor:'transparent'
+        },
         contenedorGeneral: {
             height:"100%",
-            width:"100%"
+            width:"100%",
+            backgroundColor:'transpartent'
         },
         button: {
             alignItems: 'center',
@@ -142,9 +151,7 @@ const Main = () => {
     });
 //
     return (
-        <ImageBackground source={images.fondo} style={styles.image}>
-            <Heading></Heading>
-            
+        <View style={styles.cont}>
             <View style={styles.contenedorGeneral}>
                 <LottieView source={images.DAnimada} autoPlay loop style={styles.animar}></LottieView>
                 <View style={styles.pregunta}>
@@ -171,14 +178,11 @@ const Main = () => {
                     </ButtonGame>
                 </View>
             </View>
-            <Footer screenHeight={screenHeight} screenWidth={screenWidth}></Footer>
             <View style={styles.containerChanin}>
                 <Image source={images.chanin} style={styles.chanin} resizeMode="contain"></Image>
             </View>
+        </View>
             
-            
-        </ImageBackground>
-        
     )
 }
 
