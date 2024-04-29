@@ -1,5 +1,5 @@
 import React, { Children, useEffect, useState } from "react";
-import { TouchableHighlight, View, StyleSheet, Text, Animated, Alert, Pressable } from "react-native";
+import { TouchableHighlight, View, StyleSheet, Text, Animated, Alert, Pressable, key } from "react-native";
 
 const ButtonGame = ({
     backgroundColor, 
@@ -8,7 +8,8 @@ const ButtonGame = ({
     height, 
     width, 
     _style,
-    onPress}) =>{
+    onPress,
+    disabled}) =>{
 
     const showAlert = () => {
        console.log("si se presiono")
@@ -56,7 +57,7 @@ const ButtonGame = ({
     })
 
     return (
-        <TouchableHighlight onPress={onPress? onPress : showAlert} onPressIn={onPressIn} onPressOut={onPressOut} underlayColor="transparent">
+        <TouchableHighlight onPress={onPress? onPress : showAlert} onPressIn={onPressIn} onPressOut={onPressOut} underlayColor="transparent" disabled={disabled ? disabled: false}>
             <Animated.View style={[styles.shadowBox,{transform:[{ scale: scaleAnim }]}]}>
                 <View style={styles.box}>
                     {children}

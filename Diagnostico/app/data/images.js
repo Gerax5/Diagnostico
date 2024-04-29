@@ -7,7 +7,11 @@ const images = {
     btnDesplega: require('../../assets/Elementos estáticos/Btn_Desplegable.png'),
     purpleLine: require('../../assets/Elementos estáticos/Línea_título.png'),
     chanin: require('../../assets/Elementos estáticos/Chanín.png'),
-    logoOscuro: require('../../assets/Elementos estáticos/LogoParaFondosOscuros_ExploraxV2-0.png')
+    logoOscuro: require('../../assets/Elementos estáticos/LogoParaFondosOscuros_ExploraxV2-0.png'),
+    progress: require('../../assets/Elementos estáticos/BarraProgresoNaranja.png'),
+    question: require('../../assets/Elementos estáticos/QuestionMark.png'),
+    check: require('../../assets/Elementos estáticos/check.png'),
+    estrellitas: require('../../assets/Animaciones (.json)/Estrellitas.json')
 };
 
 export default images

@@ -5,7 +5,8 @@ const theme = {
     },
     fontSize: {
         title: 50,
-        body: 30
+        body: 30,
+        subheading: 40
     }
 }
 

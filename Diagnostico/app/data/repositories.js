@@ -114,7 +114,7 @@ export default [
     },
     {
         "Pregunta": "Selecciona el número que falta en la operación",
-        "tipo": "a + ____ x c = a + b * c",
+        "tipo": "a + ? x c = a + b * c",
         "variableCount": 3,
         "isNumeric":false,
         "a": {
@@ -141,7 +141,7 @@ export default [
     },
     {
         "Pregunta": "Selecciona el signo que hace falta en la operación",
-        "tipo": "a + c x b __ c = a + c * b / c",
+        "tipo": "a + c x b ? c = a + c * b / c",
         "variableCount": 3,
         "isNumeric":false,
         "a": {
@@ -168,7 +168,7 @@ export default [
     },
     {
         "Pregunta": "Selecciona el signo que hace falta en la operación",
-        "tipo": "a x d + c x b _____ c = a * d + c * b / c",
+        "tipo": "a x d + c x b ? c = a * d + c * b / c",
         "variableCount": 4,
         "isNumeric":false,
         "a": {
@@ -230,7 +230,7 @@ export default [
     },
     {
         "Pregunta": "Selecciona el signo que hace falta:",
-        "tipo": "a +   b x c ___ b = a + b * c / b",
+        "tipo": "a +   b x c ? b = a + b * c / b",
         "variableCount": 3,
         "isNumeric":false,
         "a": {
@@ -580,7 +580,7 @@ export default [
     },
     {
         "Pregunta": "Selecciona el número que falta en la operación",
-        "tipo": "a ____  c x b / c = a + c * b / c",
+        "tipo": "a ?  c x b / c = a + c * b / c",
         "variableCount": 3,
         "isNumeric":false,
         "a": {

@@ -1,26 +1,33 @@
 import React, { Children } from "react";
 import { View, StyleSheet } from "react-native";
 
-const Box = ({ height, width, children, backgroundColor, deep, marginleft, marginTop }) => {
+const Box = ({ height, width, children, backgroundColor, shadowColor, _style }) => {
     const property = StyleSheet.create({
-      box: {
+      shadowBox:{
+        marginTop:"5%",
+        backgroundColor:shadowColor,
+        paddingBottom: 5,
         height: height,
         width: width,
-        backgroundColor: deep,
-        marginLeft: marginleft,
-        marginTop: marginTop
-      },
-      secondBox: {
+        borderRadius:15,
+        elevation:5,
+        ..._style
+    },
+    box:{
         backgroundColor:backgroundColor,
-        paddingBottom:5,
-        padding:10
-      }
+        height:"100%",
+        width:"100%",
+        borderRadius:15,
+        paddingBottom: 5,
+        justifyContent:'center',
+        alignContent:'center'
+    },
     });
 
   
     return (
-      <View style={[styles.box,property.box]}>
-        <View style={[styles.secondBox,property.secondBox]}>
+      <View style={property.shadowBox}>
+        <View style={property.box}>
             {children}
         </View>
       </View>
@@ -28,13 +35,10 @@ const Box = ({ height, width, children, backgroundColor, deep, marginleft, margi
 }
 
 const styles = StyleSheet.create({
-    box:{
-        borderRadius: 5,
-        position:'relative'
-    },
     secondBox:{
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+        paddingBottom: 5
     }
 })
 

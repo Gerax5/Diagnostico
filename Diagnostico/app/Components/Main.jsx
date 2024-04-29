@@ -130,7 +130,7 @@ const Main = () => {
         },
         btn: {
             zIndex:3,
-            marginTop: screenHeight * -0.42,
+            marginTop: screenHeight * -0.36,
             marginLeft: screenWidth * 0.25
         },
         containerChanin:{
