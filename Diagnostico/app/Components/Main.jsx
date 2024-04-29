@@ -8,27 +8,6 @@ import ButtonGame from './ButtonGame';
 import Footer from './footer';
 import {router, useNavigation} from 'expo-router'
 
-let heigh = 0
-/**
- * 
- * @returns 
- */
-
-/**const [screenWidth, setScreenWidth] = useState(Dimensions.get('window').width);
-    const [screenHeight, setScreenHeight] = useState(Dimensions.get('window').height);
-
-    useEffect(() => {
-        const updateDimensions = () => {
-            setScreenWidth(Dimensions.get('window').width);
-            setScreenHeight(Dimensions.get('window').height);
-        };
-
-        Dimensions.addEventListener('change', updateDimensions);
-
-        return () => {
-            Dimensions.removeEventListener('change', updateDimensions);
-        };
-    }, []); */
 
 const Main = () => {
 
@@ -37,7 +16,6 @@ const Main = () => {
     const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
     const handleStartGame = () => {
-        // Navegar a la pantalla /components/games
         navigation.navigate("Components/Game");
       };
 
@@ -111,7 +89,6 @@ const Main = () => {
             position:'absolute',
             flex:1,
             zIndex:1,
-            //backgroundColor:"#204D8D",
             backgroundColor:"#123051",
             height:screenHeight * 0.5,
             width:'90%',
@@ -139,7 +116,6 @@ const Main = () => {
             height: screenHeight * 0.30,
             width:screenWidth * 0.3,
             bottom:0,
-            //marginLeft: screenWidth * 0.03,
             marginBottom: screenHeight * 0.1
         },
         chanin: {
@@ -149,7 +125,7 @@ const Main = () => {
             width: "100%",
         },
     });
-//
+
     return (
         <View style={styles.cont}>
             <View style={styles.contenedorGeneral}>
@@ -185,11 +161,6 @@ const Main = () => {
             
     )
 }
-
-/**
- * 
- */
-
 
 
 export default Main;

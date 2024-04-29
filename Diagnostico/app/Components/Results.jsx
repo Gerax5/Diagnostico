@@ -8,17 +8,15 @@ import LottieView from "lottie-react-native";
 import ButtonGame from "./ButtonGame";
 
 const Results = ({route}) =>{
-    //const { buenas, malas } = route.params;
     const params = useLocalSearchParams();
     const {buenas, malas} = params;
-    console.log("BUENAAAAAAAAAAAAAS   "+buenas+"                 MALASSSS: "+malas)
     const { width: screenWidth, height: screenHeight } = useWindowDimensions();
 
     const IncrementingNumber = ({styles}) => {
         const [number, setNumber] = useState(0);
-        const targetNumber = buenas*10; // El número al que deseas llegar
-        const increment = 1; // El valor por el que quieres incrementar en cada paso
-        const intervalDuration = 100; // Duración del intervalo en milisegundos
+        const targetNumber = buenas*10; 
+        const increment = 1; 
+        const intervalDuration = 100;
       
         useEffect(() => {
           const interval = setInterval(() => {

@@ -4,27 +4,16 @@ import { StyleSheet, ImageBackground,useWindowDimensions, Animated, View } from 
 import images from "./data/images"
 import Heading from "./Components/Heading"
 import Footer from "./Components/footer"
-import { useNavigation } from "expo-router"
-import CircleAnimation from "./Components/CircleAnimation"
 
 
 const RootLayout = () => {
     const { width: screenWidth, height: screenHeight } = useWindowDimensions();
-    const [animationComplete, setAnimationComplete] = useState(false);
-
-    const handleAnimationComplete = () => {
-        setAnimationComplete(true);
-    };
-
-    /**
-     * Invariant Violation: [35,"RCTView",151,{"backgroundColor":-16234382,"position":"absolute","width":0,"height":0,"borderRadius":"<<NaN>>","collapsable":false}] is not usable as a native method argument
-     */
 
     return (
         <ImageBackground source={images.fondo} style={styles.image}>
             <Heading></Heading>
             <Footer screenHeight={screenHeight} screenWidth={screenWidth}></Footer>
-            <Slot style={{position:'absolute', zIndex:1}} />
+            <Slot style={{position:'absolute', zIndex:2}} />
         </ImageBackground>
     )
 }

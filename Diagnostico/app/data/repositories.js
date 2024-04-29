@@ -553,7 +553,7 @@ export default [
     },
     {
         "Pregunta": "Selecciona el número que falta en la operación",
-        "tipo": "a + ___ x c = a + b * c",
+        "tipo": "a + ? x c = a + b * c",
         "variableCount": 3,
         "isNumeric":false,
         "a": {

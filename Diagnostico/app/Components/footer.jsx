@@ -9,7 +9,7 @@ const Footer = ({ screenHeight, screenWidth }) => {
         pregunta: {
             backgroundColor: 'red',
             position: 'absolute',
-            zIndex: 2,
+            zIndex: 1,
             height: screenHeight * 0.13,
             width: "100%",
             bottom: 0,

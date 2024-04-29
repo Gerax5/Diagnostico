@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, Button, ImageBackground, StyleSheet, Image, Dimensions, Animated, useWindowDimensions } from "react-native";
 import images from '../data/images';
 
-//const {width: screenWidth, height: screenHeight} = useWindowDimensions();
-//const widthDim = Dimensions.get('window').width;
 
 const Heading = () => {
     
@@ -98,74 +96,6 @@ const Heading = () => {
         </View>
     )
 }
-
-/*styles = StyleSheet.create({
-    box: {
-        width:"100%"
-    },
-    moon: {
-        alignSelf:'flex-start',
-        marginTop:'0%',
-        marginLeft:'-2%',
-        position:'absolute',
-        height: Dimensions.get('window').height * 0.05,
-    
-    },
-    containterImage:{
-        zIndex:1,
-    },
-    btnDespegable: {
-        zIndex: 1,
-        //width:Dimensions.get('window').width * 0.12,
-        //height:Dimensions.get('window').height * 0.065,
-        //width:"9%",
-        resizeMode:"contain",
-        marginLeft:widthDim * 0.18
-    },
-    containerCoin: {
-        //backgroundColor: 'lightblue',
-        //borderWidth: 2, // Añade un borde para visualizar el tamaño
-        //borderColor: 'red', // Color del borde
-        marginLeft:'55%',
-        height:"4%",
-        flexDirection:'row',
-        marginTop:'10%'
-    },
-    textPunteo: {
-        zIndex:2,
-        position:'absolute',
-        color:'white',
-        fontWeight:'bold',
-        fontSize:22,
-        marginLeft:"15%",
-        marginTop:"0.5%",
-    },
-    punteo: {
-        zIndex:1,
-        position:'relative',
-        height: Dimensions.get('window').height * 0.04,
-        backgroundColor:"#123051",
-        marginTop:"1%",
-        width:'60%',
-        borderRadius: 50
-    },
-    coin: {
-        zIndex:2,
-        position:'relative',
-        alignSelf:'flex-start',
-        height: Dimensions.get('window').height * 0.04,
-        marginLeft:'-70%'
-
-    },
-    moonMovile: {
-        alignSelf:'flex-start',
-        marginTop:'5%',
-        marginLeft:'-8%',
-        position:'absolute',
-        height: Dimensions.get('window').height * 0.10
-        
-    },
-})*/
 
 
 export default Heading
