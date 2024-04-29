@@ -59,7 +59,6 @@ const realizarOperacion = (operacion) => {
                 'c':c,
                 'd':d
             }
-            console.log("Se acaba de crear la DDDDDD",d)
         }else if(operacion.variableCount == 6){
             d = generarNumeroAleatorio(operacion.d.min, operacion.d.max);
             e = generarNumeroAleatorio(operacion.e.min, operacion.e.max);
@@ -83,7 +82,6 @@ const realizarOperacion = (operacion) => {
                 'e':e
             }
         }
-        console.log("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
         if (operacion.condicion) {
             try {
                 condicionCumplida = evaluarCondicion(operacion.condicion,variables)
@@ -117,10 +115,8 @@ const realizarOperacion = (operacion) => {
         }
         
 
-        console.log(opciones)
         
         const opciones = operacion.opciones.map(opcion => {
-            console.log("Opción antes del reemplazo:", opcion); 
             let opcionCalculada = ""
             if(operacion.variableCount == 3){
                 opcionCalculada = opcion
@@ -153,10 +149,8 @@ const realizarOperacion = (operacion) => {
             }
             
         
-            console.log("Opción después del reemplazo:", opcionCalculada);
         
             try {
-                console.log("Esto se va a caluclar",opcionCalculada)
                 if(opcionCalculada.length>1){
                     if(operacion.evaluar){
                         return opcionCalculada
@@ -167,15 +161,12 @@ const realizarOperacion = (operacion) => {
                     return opcionCalculada;
                 }
             } catch (error) {
-                console.error("Error evaluando la opción:", error);
                 return null;
             }
         }).filter(opcion => opcion !== null);
 
         opciones.sort(() => Math.random() - 0.5);
 
-        //const preg = operacion.tipo.replace
-        console.log("PRegutaaaa",operacion.tipo)
         let preg = null
         if(operacion.tipo){
             if(operacion.variableCount == 3){
@@ -221,7 +212,6 @@ const realizarOperacion = (operacion) => {
         
 
         if(!operacion.isNumeric){
-            console.log("ENTRO a es numerico")
             if(operacion.evaluar){
                 
             }else{
@@ -231,14 +221,13 @@ const realizarOperacion = (operacion) => {
                 .replace(/b/g, b.toString())
                 .replace(/c/g, c.toString())
                 .replace("?","");
-                console.log("ESTO SE VA A EVALUAR: "+res)
+
                 res = eval(res)
                 preg = preg[0]+" = "+res
             }
             
         }
         
-        console.log("PR",preg)
 
         return {
             pregunta: preg,
@@ -339,10 +328,8 @@ const Game = () => {
         console.log("siguiente preguntaa")
         if (indicePregunta < repositories.length - 1) {
             const nuevoIndice = indicePregunta + 1;
-            console.log("Nuevo indice",nuevoIndice)
             setIndicePregunta(nuevoIndice);
             const nuevaPregunta = realizarOperacion(repositories[nuevoIndice]);
-            console.log("nueva pregunta",nuevaPregunta)
             setPreguntaActual(nuevaPregunta);
             console.log("pregunta actual:", preguntaActual)
             setButtonColors(["#6AB1B5", "#6AB1B5", "#6AB1B5", "#6AB1B5"])

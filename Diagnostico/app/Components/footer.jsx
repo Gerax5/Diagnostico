@@ -21,7 +21,7 @@ const Footer = ({ screenHeight, screenWidth }) => {
         circleBottom1: {
             position:'absolute',
             backgroundColor: '#0084C4',
-            borderRadius: 500, // Un valor grande para asegurarse de que el borde sea redondo
+            borderRadius: 500,
             height: '100%',
             width: '200%',
             zIndex: 6,
