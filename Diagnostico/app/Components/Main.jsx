@@ -135,7 +135,7 @@ const Main = () => {
         },
         containerChanin:{
             position:'absolute',
-            zIndex: 1,
+            zIndex: 2,
             height: screenHeight * 0.30,
             width:screenWidth * 0.3,
             bottom:0,
@@ -143,8 +143,8 @@ const Main = () => {
             marginBottom: screenHeight * 0.1
         },
         chanin: {
-            zIndex: 6,
-            position: 'relative',
+            zIndex: 7,
+            position: 'absolute',
             height: "100%",
             width: "100%",
         },

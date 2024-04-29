@@ -24,7 +24,7 @@ const Footer = ({ screenHeight, screenWidth }) => {
             borderRadius: 500, // Un valor grande para asegurarse de que el borde sea redondo
             height: '100%',
             width: '200%',
-            zIndex: 2,
+            zIndex: 6,
         },
         circleBottom2: {
             position: 'absolute',
@@ -60,6 +60,26 @@ const Footer = ({ screenHeight, screenWidth }) => {
         },
         buttons:{
             marginHorizontal: screenWidth * 0.01
+        },
+        purpleC1:{
+            zIndex: 1,
+            height:screenHeight*0.3, 
+            width:screenWidth*1, 
+            marginTop:screenHeight* -0.12
+        },
+        purpleC2:{
+            zIndex:2,
+            height:screenHeight*0.3, 
+            width:screenWidth*1, 
+            alignSelf:'flex-end', 
+            marginTop:screenHeight*-0.25
+        },
+        purpleC3:{
+            zIndex:3,
+            height:screenHeight*0.3, 
+            width:screenWidth*1, 
+            alignSelf:'flex-end', 
+            marginTop:screenHeight*-0.25
         }
     });
 
@@ -83,6 +103,11 @@ const Footer = ({ screenHeight, screenWidth }) => {
                     </View>
                 </View>
             </View>
+            
+            
+            <Image source={images.circulo1} style={styles.purpleC1} resizeMode="contain"></Image>
+            <Image source={images.circulo2} style={styles.purpleC2} resizeMode="contain"></Image>
+            <Image source={images.circulo3} style={styles.purpleC3} resizeMode="contain"></Image>
         </View>
     );
 }

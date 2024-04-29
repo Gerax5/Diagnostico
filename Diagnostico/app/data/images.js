@@ -11,7 +11,15 @@ const images = {
     progress: require('../../assets/Elementos estáticos/BarraProgresoNaranja.png'),
     question: require('../../assets/Elementos estáticos/QuestionMark.png'),
     check: require('../../assets/Elementos estáticos/check.png'),
-    estrellitas: require('../../assets/Animaciones (.json)/Estrellitas.json')
+    estrellitas: require('../../assets/Animaciones (.json)/Estrellitas.json'),
+    contenedor: require('../../assets/Elementos estáticos/pantalla_puntos/background_conteo_preguntas.png'),
+    estrellaAmarilla: require('../../assets/Elementos estáticos/pantalla_puntos/estrella_preguntas.png'),
+    estrellaRoja: require('../../assets/Elementos estáticos/pantalla_puntos/estrella_incorrectas.png'),
+    estrellaVerde: require('../../assets/Elementos estáticos/pantalla_puntos/estrella_correctas.png'),
+    conteoMoneda: require('../../assets/Elementos estáticos/pantalla_puntos/background_conteomonedas.png'),
+    circulo1: require('../../assets/Elementos estáticos/Círculos para pantallas/Círculo-morado-1.png'),
+    circulo2: require('../../assets/Elementos estáticos/Círculos para pantallas/Círculo-morado-2.png'),
+    circulo3: require('../../assets/Elementos estáticos/Círculos para pantallas/Círculo-morado-3.png')
 };
 
 export default images

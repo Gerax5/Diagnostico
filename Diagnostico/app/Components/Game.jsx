@@ -6,7 +6,7 @@ import images from '../data/images';
 import ButtonGame from './ButtonGame';
 import repositories from '../data/repositories'
 import Box from './Box';
-import {router, useNavigation} from 'expo-router'
+import {router, useNavigation, useRouter} from 'expo-router'
 
 const generarNumeroAleatorio = (min, max) => {
     if (min === max) {
@@ -259,6 +259,7 @@ const realizarOperacion = (operacion) => {
 
 const Game = () => {
     const navigation = useNavigation();
+    const router = useRouter()
     //Varibales que cambian
     const { width: screenWidth, height: screenHeight } = useWindowDimensions();
     const [indicePregunta, setIndicePregunta] = useState(0);
@@ -329,8 +330,9 @@ const Game = () => {
     };
 
     const handleFinishGame = () => {
-        // Navegar a la pantalla /components/games y pasar parámetros
-        navigation.navigate("Components/Results", { buenas: resultado[0], malas: resultado[1] });
+        const buenas = respuestas[0]
+        const malas =  respuestas[1]
+        router.push({pathname:"/Components/Results", params: {buenas: buenas, malas: malas}})
     };
 
     const siguientePregunta = () => {
@@ -365,7 +367,7 @@ const Game = () => {
     styles = StyleSheet.create({
         header:{
             alignItems:'center',
-            marginTop: screenHeight * 0.04
+            marginTop: screenHeight * 0.02
         },
         textHeader:{
             textAlign:'center',

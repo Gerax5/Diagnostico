@@ -8,14 +8,6 @@ import { useNavigation } from "expo-router"
 import CircleAnimation from "./Components/CircleAnimation"
 
 
-/*const RootLayout = () => {
-    return <Stack>
-        <Stack.Screen name='index' options={{headerShown:false}}/>
-        <Stack.Screen name="Components/Main" options={{headerShown:false}}/>
-        <Stack.Screen name="Components/Game" options={{headerShown:false}} />
-    </Stack>
-}*/
-
 const RootLayout = () => {
     const { width: screenWidth, height: screenHeight } = useWindowDimensions();
     const [animationComplete, setAnimationComplete] = useState(false);
@@ -31,9 +23,8 @@ const RootLayout = () => {
     return (
         <ImageBackground source={images.fondo} style={styles.image}>
             <Heading></Heading>
-            <Slot />
-            
             <Footer screenHeight={screenHeight} screenWidth={screenWidth}></Footer>
+            <Slot style={{position:'absolute', zIndex:1}} />
         </ImageBackground>
     )
 }
@@ -45,6 +36,7 @@ styles = StyleSheet.create({
         height: '100%',
         resizeMode: 'cover',
         overflow:'hidden',
+        
     },
     container: {
         flex: 1,
