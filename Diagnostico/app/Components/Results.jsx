@@ -124,7 +124,22 @@ const Results = ({route}) =>{
             color: theme.colors.textSecondary,
             fontWeight: 'bold',
             fontSize: 18
-        }
+        },
+        containerChanin:{
+            position:'absolute',
+            zIndex: 2,
+            height: screenHeight * 0.30,
+            width:screenWidth * 0.3,
+            bottom:0,
+            marginBottom: screenHeight * -0.15,
+            left:0
+        },
+        chanin: {
+            zIndex: 7,
+            position: 'absolute',
+            height: "100%",
+            width: "100%",
+        },
     })
 
     return (
@@ -174,6 +189,9 @@ const Results = ({route}) =>{
                 </ButtonGame>
             </Box>
             <LottieView source={images.DAnimada} autoPlay loop style={styles.animar}></LottieView>
+            <View style={styles.containerChanin}>
+                <Image source={images.chanin} style={styles.chanin} resizeMode="contain"></Image>
+            </View>
         </View>
     )
 }

@@ -423,7 +423,22 @@ const Game = () => {
             width: '100%',
             height: '100%',
             marginTop: screenHeight * -0.13
-        }
+        },
+        containerChanin:{
+            position:'absolute',
+            zIndex: 2,
+            height: screenHeight * 0.25,
+            width:screenWidth * 0.3,
+            bottom:0,
+            marginBottom: screenHeight * 0.1,
+            left:0
+        },
+        chanin: {
+            zIndex: 7,
+            position: 'absolute',
+            height: "100%",
+            width: "100%",
+        },
     })
 
             const PlaceholderImage = ({size}) => (
@@ -550,7 +565,9 @@ const Game = () => {
                 </View>
             )} 
             </View>
-            
+            <View style={styles.containerChanin}>
+                <Image source={images.chanin} style={styles.chanin} resizeMode="contain"></Image>
+            </View>
         </View>
     );
 }
